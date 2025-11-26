@@ -1,4 +1,5 @@
 'use client';
+import Border from '@/app/components/wood-border/border';
 import { useState } from 'react';
 
 export default function CreatePage() {
@@ -8,6 +9,11 @@ export default function CreatePage() {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
             const selectedFiles = Array.from(e.target.files);
+            files.map((file) => {
+                if (file.name === selectedFiles[0].name) {
+                    return;
+                }
+            })
             setFiles([...files, ...selectedFiles]);
         }
     };
@@ -29,9 +35,9 @@ export default function CreatePage() {
         if (e.dataTransfer.files) {
             const droppedFiles = Array.from(e.dataTransfer.files);
             // 이미지와 비디오만 필터링
-            const validFiles = droppedFiles.filter(
-                (file) => file.type.startsWith('image/') || file.type.startsWith('video/')
-            );
+            const validFiles = droppedFiles
+            .filter((file) => file.type.startsWith('image/') || file.type.startsWith('video/'))
+            .filter((file) => !files.some((existingFile) => existingFile.name === file.name));
             setFiles([...files, ...validFiles]);
         }
     };
@@ -45,20 +51,38 @@ export default function CreatePage() {
     };
     return (
         <div className="p-0 flex flex-col items-center justify-center w-full h-full">
-            <div
-                onClick={handleBoxClick}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-                className={`w-2/3 h-1/2 flex flex-col gap-5 backdrop-blur-lg items-center justify-center rounded-xl text-white text-lg lg:text-2xl cursor-pointer bg-white/20 hover:bg-white/10 transition px-4 py-2
-                ${
-                    isDragging
-                        ? 'border-sky-500 bg-white/20 shadow-sky-700'
-                        : 'border-gray-100/30 hover:bg-white/10 hover:border-gray-100/50 shadow-sky-500 hover:shadow-sky-700'
-                }`}
-            >
-                <div>일상을 등록해보아요!</div>
-                <div>Drag & Drop</div>
+            <div className="relative w-2/3 h-64">
+                <Border/>
+                <div
+                    onClick={handleBoxClick}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                    className="w-full h-full gap-5 items-center justify-center text-white text-lg lg:text-2xl cursor-pointer p-5 bg-box-background"
+                >
+                    <div className="flex flex-col gap-3 w-full h-full font-bold text-lg font-esamanru text-[#5c2500]">
+                        {files.length > 0 ? (
+                        <div className="overflow-scroll overflow-x-hidden pl-3">
+                            {files.map((file, index) => (
+                                <div className="flex items-center justify-between font-esamanru text-[#5c2500] mb-1" key={index}>
+                                    <span>
+                                        {file.name} ({file.type.startsWith('image/') ? '이미지' : '비디오'})
+                                    </span>
+                            <button
+                                onClick={() => handleRemoveFile(index)}
+                                className="text-red-500 hover:text-red-900 text-xl cursor-pointer"
+                            >
+                                ❌
+                            </button>
+                            </div>
+                            ))}
+                        </div>
+                        ) : (
+                            <span>파일 던지거나 클릭해 등록하세요!</span>
+                        )}
+                        
+                    </div>
+                </div>
             </div>
             <input
                 id="fileInput"
@@ -68,24 +92,10 @@ export default function CreatePage() {
                 onChange={handleFileChange}
                 className="hidden"
             />
-            {files.length > 0 && (
-                <div className="w-2/3 backdrop-blur-lg bg-white/20 p-6 rounded-xl">
-                    <p className="text-white font-bold mb-4">선택된 파일: {files.length}개</p>
-                    {files.map((file, index) => (
-                        <div className="flex items-center justify-between">
-                            <span>
-                                {file.name} ({file.type.startsWith('image/') ? '이미지' : '비디오'})
-                            </span>
-                            <button
-                                onClick={() => handleRemoveFile(index)}
-                                className="text-red-500 hover:text-red-700 text-xl cursor-pointer"
-                            >
-                                ❌
-                            </button>
-                        </div>
-                    ))}
-                </div>
-            )}
+            <div className='relative mt-5'>
+                <Border/>
+                <button className='px-8 py-5 bg-box-background font-bold font-esamanru text-[#5c2500]'>전시하기</button>
+            </div>
         </div>
     );
 }

@@ -1,15 +1,74 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-    --breakpoint-sm: 430px;
-    --breakpoint-md: 744px;
-    --breakpoint-lg: 1024px;
-    --breakpoint-xl: 1280px;
-    --breakpoint-2xl: 1600px;
+/* Custom Font - Esamanru */
+@font-face {
+  font-family: "Esamanru";
+  src: url("/assets/images/fonts/esamanru Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
 
-    --background-image-admin: url('/assets/images/main-lg.jpg');
+@font-face {
+  font-family: "Esamanru";
+  src: url("/assets/images/fonts/esamanru Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Esamanru";
+  src: url("/assets/images/fonts/esamanru Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Stardew-Valley";
+  src: url("/assets/images/fonts/Stardew-Valley-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden; /* body 스크롤 제거 */
 }
+
+html {
+  overflow: hidden; /* html 스크롤 제거 */
+}
+
+/* Liquid Glass Scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 100vh;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Firefox support */
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+/* Stardew Valley Pixel Font */
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
