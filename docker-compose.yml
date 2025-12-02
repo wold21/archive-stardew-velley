@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+    stardew-archive:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: stardew-archive:latest
+        container_name: stardew-archive
+        restart: unless-stopped
+        ports:
+            - '52000:52000'
+        environment:
+            - NODE_ENV=production
+            - PORT=52000
+        env_file:
+            - .env
+        volumes:
+            # public 디렉토리 (이미지/에셋 파일) - 필요시 호스트와 동기화
+            - ./public:/app/public:ro
+        networks:
+            - stardew-network
+        healthcheck:
+            test:
+                [
+                    'CMD',
+                    'node',
+                    '-e',
+                    "require('http').get('http://localhost:52000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})",
+                ]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
+
+networks:
+    stardew-network:
+        driver: bridge
