@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Asset } from '@/types/asset';
-import AdminCard from '@/app/components/card/AdminCard';
+import AdminCard from '@/app/components/card/Card';
 import { ApiResponse } from '@/types/common';
 import Masonry from 'react-masonry-css';
 
