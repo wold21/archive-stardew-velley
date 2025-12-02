@@ -36,12 +36,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     `}
                 >
                     <div className="flex items-center justify-evenly mt-5 mb-10">
-                        <h1 className="font-bold text-center p-2 font-esamanru text-[#351b05] text-shadow-sm sm:text-base md:text-xl lg:text-3xl lg:tracking-widest">농장주페이지</h1>
+                        <h1 className="font-bold text-center p-2 font-neodgm text-[#351b05] text-shadow-sm sm:text-base md:text-xl lg:text-3xl lg:tracking-widest">농장주페이지</h1>
                         <button className="z-50 lg:hidden p-2 rounded sm:text-2xl md:text-3xl" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                             🍄
                         </button>
                     </div>
-                    <nav className='flex flex-col items-center gap-2 w-full text-[#382128] text-center font-esamanru font-medium text-shadow-sm sm:text-xs md:text-sm lg:text-base'>
+                    <nav className='flex flex-col items-center gap-2 w-full text-[#382128] text-center font-neodgm font-medium text-shadow-sm sm:text-xs md:text-sm lg:text-base'>
                         <Link href="/admin/list" className="relative w-5/6 p-2 bg-box-background group">
                             <div className="opacity-0 group-hover:opacity-100">
                                 <Border/>

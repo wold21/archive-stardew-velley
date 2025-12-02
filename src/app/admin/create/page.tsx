@@ -111,7 +111,22 @@ export default function CreatePage() {
     <>  
         {loading && (
             <div className='fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center'>
-                <div className='font-esamanru font-bold text-white text-2xl animate-pulse'>
+                <div className="absolute inset-0 overflow-hidden">
+                    {[...Array(30)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="absolute w-1.5 h-1.5 bg-white rotate-45 animate-twinkle"
+                            style={{
+                                left: `${Math.random() * 100}%`,
+                                top: `${Math.random() * 100}%`,
+                                animationDelay: `${Math.random() * 3}s`,
+                                animationDuration: `${2 + Math.random() * 2}s`,
+                                clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+                            }}
+                        />
+                    ))}
+                </div>
+                <div className='font-neodgm font-bold text-white text-2xl animate-pulse'>
                     노예 일상 추가 중...
                 </div>
             </div>
@@ -244,7 +259,7 @@ export default function CreatePage() {
             {files.length > 0 && (
                 <div onClick={()=> handleSubmit()} className="relative w-full max-w-4xl mx-auto flex-shrink-0">
                     <Border />
-                    <button disabled={loading} className="w-full py-4 md:py-5 bg-box-background font-bold font-esamanru text-[#5c2500] text-lg md:text-xl">
+                    <button disabled={loading} className="w-full py-4 md:py-5 bg-box-background font-bold font-neodgm text-[#5c2500] text-lg md:text-xl lettering-widest">
                         {loading ? '노예 일상 추가 중...' : `전시하기 (${files.length}개 파일)`}
                     </button>
                 </div>

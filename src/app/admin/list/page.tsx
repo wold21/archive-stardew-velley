@@ -5,6 +5,7 @@ import { Asset } from '@/types/asset';
 import AdminCard from '@/app/components/card/Card';
 import { ApiResponse } from '@/types/common';
 import Masonry from 'react-masonry-css';
+import Card from '@/app/components/card/Card';
 
 export default function ListPage() {
     const [items, setItems] = useState<Asset[]>([]);
@@ -84,7 +85,7 @@ export default function ListPage() {
                 columnClassName="pl-6 bg-clip-padding"
             >
                 {items.map((item) => (
-                    <AdminCard 
+                    <Card 
                         key={item.id}
                         id={item.id}
                         thumbnailPath={item.thumbnailPath}

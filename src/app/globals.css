@@ -31,6 +31,12 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "neodgm";
+  src: url("/assets/images/fonts/neodgm.woff") format("woff");
+  font-style: normal;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   overflow: hidden; /* body 스크롤 제거 */
@@ -81,4 +87,20 @@ html {
   to {
     opacity: 1;
   }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
 }

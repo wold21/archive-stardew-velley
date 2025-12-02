@@ -20,6 +20,7 @@ const config: Config = {
             fontFamily: {
                 esamanru: ['Esamanru', 'sans-serif'],
                 stardew: ['Stardew-Valley', 'sans-serif'],
+                neodgm: ['neodgm', 'sans-serif'],
             },
         },
     },
