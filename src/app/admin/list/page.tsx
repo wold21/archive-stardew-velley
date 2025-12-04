@@ -122,8 +122,8 @@ export default function ListPage() {
             <div ref={loadMoreRef} className="w-full py-8 flex justify-center">
                 {loading && <div className="font-neodgm font-bold text-[#8b6f47] text-lg">착취 로딩 중...</div>}
                 {!hasMore && items.length > 0 && (
-                    <div className="font-neodgm font-bold text-[#8b6f47] text-lg">
-                        착취로 인한 노예들의 일상을 더 추가해주세요.
+                    <div className="font-esamanru font-bold text-[#e3af66] text-lg">
+                        착취 내음 가득한 노예들의 일상을 더 추가해 주세요.
                     </div>
                 )}
             </div>

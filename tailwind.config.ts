@@ -5,6 +5,7 @@ const config: Config = {
     theme: {
         extend: {
             screens: {
+                xs: '320px',
                 sm: '430px',
                 md: '744px',
                 lg: '1024px',
@@ -25,18 +26,18 @@ const config: Config = {
         },
     },
     plugins: [
-        function({ matchUtilities}: { matchUtilities: any;}) {
+        function ({ matchUtilities }: { matchUtilities: any }) {
             matchUtilities(
                 {
                     'text-shadow': (value: string) => ({
                         textShadow: value,
                     }),
                 },
-                { 
+                {
                     values: {
                         DEFAULT: '2px 2px 5px rgba(0, 0, 0, 0.3)',
                         sm: '-1px 1px 1px rgba(0, 0, 0, 0.4)',
-                    }
+                    },
                 }
             );
         },

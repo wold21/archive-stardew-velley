@@ -15,10 +15,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             >
                 <span className="text-white text-2xl">⚙️</span>
             </div>
-            <div className="flex h-screen bg-forest bg-cover bg-center">
+            <div className="lg:flex h-screen bg-forest bg-cover bg-center">
                 {!isMenuOpen && (
                     <button
-                        className="fixed top-3 left-3 z-50 lg:hidden text-white p-2 rounded text-4xl"
+                        className="fixed top-3 left-3 z-50 lg:hidden text-white p-2 rounded text-3xl"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
                         🍄
@@ -28,39 +28,35 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <aside
                     className={`
                         text-white
-                        sm:w-40 md:w-48 lg:w-64
-                        sm:fixed md:fixed lg:static h-full z-40
+                        w-40 sm:w-40 md:w-48 lg:w-64
+                        fixed lg:static h-full z-40
                         transition-transform duration-300
                         bg-brownwood bg-size-[100%_100%] bg-center
-                        relative
                         after:absolute after:top-0 after:right-0 after:w-2 after:h-full
                         after:bg-gradient-to-r after:from-[#8a3a06] after:to-[#cc6f04]
                         ${isMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
                     `}
                 >
                     <div className="flex items-center justify-evenly mt-5 mb-10">
-                        <h1 className="font-bold text-center p-2 font-neodgm text-[#351b05] text-shadow-sm sm:text-base md:text-xl lg:text-3xl lg:tracking-widest">
+                        <h1 className="font-bold text-center font-neodgm text-[#351b05] text-shadow-sm sm:text-base md:text-xl lg:text-3xl lg:tracking-widest">
                             농장주페이지
                         </h1>
-                        <button
-                            className="z-50 lg:hidden p-2 rounded sm:text-2xl md:text-3xl"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        >
+                        <button className="z-50 lg:hidden rounded text-2xl" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                             🍄
                         </button>
                     </div>
-                    <nav className="flex flex-col items-center gap-2 w-full text-[#382128] text-center font-neodgm font-medium text-shadow-sm sm:text-xs md:text-sm lg:text-base">
+                    <nav className="flex flex-col items-center gap-2 w-full text-[#382128] text-center font-neodgm font-medium text-shadow-sm xs:text-xs sm:text-xs md:text-sm lg:text-base">
                         <Link href="/admin/list" className="relative w-5/6 p-2 bg-box-background group">
                             <div className="opacity-0 group-hover:opacity-100">
                                 <Border />
                             </div>
-                            <span>노예들의 일상 모아보기</span>
+                            <span>일상 보기</span>
                         </Link>
                         <Link href="/admin/create" className="relative w-5/6 p-2 bg-box-background group">
                             <div className="opacity-0 group-hover:opacity-100">
                                 <Border />
                             </div>
-                            <span>노예 일상 등록하기</span>
+                            <span>등록하기</span>
                         </Link>
                     </nav>
                 </aside>
@@ -70,7 +66,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         className="fixed inset-0 bg-black/70 z-30 lg:hidden"
                     ></div>
                 )}
-                <main className="flex-1 overflow-auto lg:ml-0">{children}</main>
+                <main className="w-full h-screen overflow-auto">{children}</main>
             </div>
         </>
     );
